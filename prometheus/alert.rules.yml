@@ -1,0 +1,11 @@
+groups:
+  - name: system-alerts
+    rules:
+      - alert: HighCPUUsage
+        expr: sum(rate(node_cpu_seconds_total[1m])) > 0.2
+        for: 10s
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU Usage Detected"
+          description: "CPU usage is above 20%"
