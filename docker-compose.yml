@@ -7,6 +7,7 @@ services:
       - "5000:5000"
     container_name: monitoring_app
 
+#prometheus for collecting time series metrices
   prometheus:
     image: prom/prometheus
     container_name: prometheus
@@ -17,12 +18,14 @@ services:
     depends_on:
       - node_exporter
 
+#added node exporter for exporting system metrices
   node_exporter:
     image: prom/node-exporter
     container_name: node_exporter
     ports:
       - "9100:9100"
 
+#added grafana dashboard
   grafana:
     image: grafana/grafana
     container_name: grafana
